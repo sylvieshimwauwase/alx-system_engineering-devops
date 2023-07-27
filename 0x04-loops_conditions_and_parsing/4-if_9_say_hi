@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# script using for loop and if statement
+
+i=1
+while [ $i -le 10 ]
+do
+	if [ $i -eq 9 ]; then
+		echo "Best School"
+		echo "Hi"
+	else
+		echo "Best school"
+	fi 
+
+	((i++))
+done
