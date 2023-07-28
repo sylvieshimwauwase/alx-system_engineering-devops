@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# script that displays message indefinitely
+
+msg="To infinity and beyond"
+while true; do
+echo "$msg"
+sleep 2
+done
