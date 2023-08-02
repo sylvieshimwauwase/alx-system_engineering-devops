@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script to display IPV4 on machine
+
+ip -o -4 addr show | awk '{print $4"$"}' | awk -F'/' '{print $1}'
