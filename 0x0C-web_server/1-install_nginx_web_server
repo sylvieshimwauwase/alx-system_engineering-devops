@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # updating package list and install Nginx
 
-sudo apt-get install update -y
+sudo apt-get update -y
 sudo apt-get install nginx -y
 
 echo 'Hello World!' > /var/www/html/index.html
