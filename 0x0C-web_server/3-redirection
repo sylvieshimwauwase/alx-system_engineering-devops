@@ -9,4 +9,4 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.ba
 
 sudo sed -i "37i\rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
 
-service nginx restart
+sudo service ngnix start

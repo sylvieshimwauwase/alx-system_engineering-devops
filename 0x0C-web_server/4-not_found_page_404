@@ -19,4 +19,4 @@ RULE="\\\n\terror_page 404 /404.html;\n\n\tlocation = /404.html {\n\t\tinternal;
 
 sudo sed -i "53i $RULE" /etc/nginx/sites-available/default
 
-sudo service nginx reload
+sudo service nginx restart
