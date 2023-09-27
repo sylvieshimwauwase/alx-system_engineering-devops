@@ -1,23 +1,23 @@
-# Puppet script to install nginx
-
-package {'nginx':
-  ensure => 'present',
+exec { 'apt-get-update':
+  command => '/usr/bin/apt-get update',
 }
 
-exec {'install':
-  command  => 'sudo apt-get update ; sudo apt-get -y install nginx',
-  provider => shell,
+package { 'nginx':
+  ensure  => installed,
+  require => Exec['apt-get-update'],
 }
 
-exec {'Hello World':
-  command  => 'echo "Hello World!" | sudo dd status=none of=/var/www/html/index.html',
+file { '/var/www/html/index.html':
+  content => 'Hello World!',
+  require => Package['nginx'],
 }
 
-exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation \/redirect_me {\\n\\t\\treturn 301 https:\/\/www.youtube.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
-  provider => shell,
+exec {'redirect_me':
+  command  => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+  provider => 'shell'
 }
 
-exec {'run':
-  command  => 'sudo service nginx restart',
-  provider => shell,
+service { 'nginx':
+  ensure  => running,
+  require => Package['nginx'],
 }
