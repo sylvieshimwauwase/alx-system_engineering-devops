@@ -1,0 +1,10 @@
+#!/user/bin/env bash
+# Script to configure nginx with header
+apt-get update
+apt-get install -y nginx
+
+echo "Hello World!" |sudo tee /var/www/html/index.html
+
+echo "add_header X-Served-By \$ubuntu;" > /etc/nginx/conf.d/custom_response_header.conf
+
+service nginx start
