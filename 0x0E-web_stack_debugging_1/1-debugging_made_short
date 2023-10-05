@@ -3,6 +3,6 @@
 
 ln -sf /etc/nginx/sites-available/default /etc/sites-enabled/default
 
-Service nginx restart
+Service nginx start
 
-kill "(pgrep "nginx' | head -1)"
+kill "$(pgrep 'nginx' | head -1)"
