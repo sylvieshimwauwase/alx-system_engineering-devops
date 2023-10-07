@@ -1,4 +1,4 @@
-#!/user/bin/env bash
+#!/usr/bin/env bash
 # Script to configure nginx with header
 apt-get update
 apt-get install -y nginx

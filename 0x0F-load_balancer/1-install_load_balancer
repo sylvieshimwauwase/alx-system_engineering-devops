@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#!/usr/bin/env bash
 
 # Ensure that the script is running as root (sudo)
 if [ "$(id -u)" != "0" ]; then
