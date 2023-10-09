@@ -1,1 +1,22 @@
-#!/usr/bin/env bash
+global
+    maxconn 4096
+    log /dev/log local0
+    log /dev/log local1 notice
+    daemon
+
+defaults
+    mode http
+    timeout connect 5s
+    timeout client 50s
+    timeout server 50s
+
+frontend sylvieshimwauwase_frontend
+    bind *:443 ssl crt /etc/letsencrypt/live/www.sshimwau.tech/fullchain.pem
+    mode http
+    default_backend sylvieshimwauwase_backend
+
+backend sylvieshimwauwase_backend
+    balance roundrobin
+    mode http
+    server 305654-web-01 54.224.33.148:80 check
+    server 305654-web-02 54.234.37.54:80 check
