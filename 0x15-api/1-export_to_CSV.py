@@ -19,7 +19,7 @@ if __name__ == '__main__':
         print("Employee not found.")
         sys.exit(1)
 
-    username = response.json().get('name')
+    username = response.json().get('username')
 
     todo_url = url + "/todos"
     response = requests.get(todo_url)
@@ -27,6 +27,6 @@ if __name__ == '__main__':
 
     with open('{}.csv'.format(employee_id), 'w') as file:
         for task in tasks:
-            file.write('"{}","{}","{}"\n'
+            file.write('"{}","{}","{}","{}"\n'
                        .format(employee_id, username, task.get('completed'),
                                task.get('title')))

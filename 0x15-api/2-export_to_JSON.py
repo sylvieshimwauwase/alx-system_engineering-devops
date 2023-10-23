@@ -20,7 +20,7 @@ if __name__ == '__main__':
         print("Employee not found.")
         sys.exit(1)
 
-    username = response.json().get('name')
+    username = response.json().get('username')
 
     todo_url = url + "/todos"
     response = requests.get(todo_url)
