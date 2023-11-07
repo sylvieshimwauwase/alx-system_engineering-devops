@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """returning a list containing titles of all articles"""
 
-from requests import get
+import requests
 after = None
 
 
@@ -13,7 +13,7 @@ def recurse(subreddit, hot_list=[]):
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     params = {'after': after}
 
-    results = get(url, headers=headers, params=params, allow_redirects=False)
+    results = requests.get(url, headers=headers, params=params, allow_redirects=False)
 
     if results.status_code == 200:
         afterData = results.json().get("data").get("after")
