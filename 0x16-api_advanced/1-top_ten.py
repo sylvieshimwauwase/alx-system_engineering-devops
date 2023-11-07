@@ -15,7 +15,7 @@ def top_ten(subreddit):
     params = {'limit': 10}
 
     response = get(url, headers=headers, params=params)
-    results  = response.json()
+    results = response.json()
 
     try:
         myData = results.get('data').get('children')
