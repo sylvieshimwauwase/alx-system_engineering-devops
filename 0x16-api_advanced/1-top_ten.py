@@ -1,27 +1,27 @@
 #!/usr/bin/python3
 """printing titles of the 10 hot posts"""
 
-import requests
+from requests import get
 
 
 def top_ten(subreddit):
     """the 10 hot posts"""
 
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {'User-Agent': 'MyRedditBot/1.0'}
+    if subreddit is None or not isinstance(subreddit, str):
+        print("None")
 
-    response = requests.get(url, headers=headers)
+    url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
+    headers = {'User-Agent': 'Google Chrome Version 81.0.4044.129'}
+    params = {'limit':10}
 
-    if response.status_code == 200:
-        data = response.json()
-        posts = data['data']['children']
+    response = get(url, headers=headers, params=params)
+    results  = response.json()
 
-        if len(posts) == 0:
-            print("No posts found in this subreddit.")
-        else:
-            for post in posts:
-                title = post['data']['title']
-                print(title)
+    try:
+        myData = results.get('data').get('children')
 
-    else:
-        print(f"Error: {response.status_code}. Subreddit may not exist.")
+        for a in myData:
+            print(a.get('data').get('title'))
+
+    except Exception:
+        print("None")
