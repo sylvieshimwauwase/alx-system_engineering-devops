@@ -3,6 +3,7 @@
 
 import requests
 
+
 def number_of_subscribers(subreddit):
     """returning number of subscribers"""
 
@@ -18,7 +19,7 @@ def number_of_subscribers(subreddit):
             return subscribers
         else:
             print(f"Error: {response.status_code}. Subreddit may not exist.")
-    
+
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
 

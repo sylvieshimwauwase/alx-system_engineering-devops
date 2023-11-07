@@ -3,6 +3,7 @@
 
 import requests
 
+
 def top_ten(subreddit):
     """the 10 hot posts"""
 
